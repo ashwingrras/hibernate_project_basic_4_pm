@@ -1,0 +1,13 @@
+
+
+<hibernate-mapping>
+    <class name="org.example.modal.Trainer" table="trainer">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <property name="mobileNo" column="mobile_no"/>
+        <property name="emailId" column="email_id"/>
+    </class>
+</hibernate-mapping>

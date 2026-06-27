@@ -1,0 +1,21 @@
+<hibernate-mapping>
+    <class name="org.example.modal.inheritance.Vehicle" table="vehicle">
+
+        <id name="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+
+        <joined-subclass name="org.example.modal.inheritance.Car" table="car">
+            <key column="id"/>
+            <property name="seatingCapacity"/>
+        </joined-subclass>
+
+        <joined-subclass name="org.example.modal.inheritance.Bike" table="bike">
+            <key column="id"/>
+            <property name="engineCapacity"/>
+        </joined-subclass>
+
+    </class>
+</hibernate-mapping>

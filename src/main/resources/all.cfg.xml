@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <!-- Student -->
+    <class name="com.example.Student" table="student">
+
+        <id name="id" column="student_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <property name="mobileNo" column="mobile_no"/>
+        <property name="emailId" column="email_id"/>
+
+        <!-- Many Students -> Many Batches -->
+        <set name="batches" table="batch_students">
+            <key column="student_id"/>
+            <many-to-many class="com.example.Batch"
+                          column="batch_id"/>
+        </set>
+
+    </class>
+
+    <!-- Trainer -->
+    <class name="com.example.Trainer" table="trainer">
+
+        <id name="id" column="trainer_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <property name="mobileNo" column="mobile_no"/>
+        <property name="emailId" column="email_id"/>
+
+        <!-- One Trainer -> Many Batches -->
+        <set name="batches" inverse="true">
+            <key column="trainer_id"/>
+            <one-to-many class="com.example.Batch"/>
+        </set>
+
+    </class>
+
+    <!-- Course -->
+    <class name="com.example.Course" table="course">
+
+        <id name="id" column="course_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <property name="description"/>
+        <property name="fees"/>
+
+    </class>
+
+    <!-- Batch -->
+    <class name="com.example.Batch" table="batch">
+
+        <id name="id" column="batch_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <property name="batchNo" column="batch_no"/>
+        <property name="time"/>
+
+        <!-- Many Batches -> One Trainer -->
+        <many-to-one name="trainer"
+                     class="com.example.Trainer"
+                     column="trainer_id"/>
+
+        <!-- Many Batches -> Many Students -->
+        <set name="students" table="batch_students">
+            <key column="batch_id"/>
+            <many-to-many class="com.example.Student"
+                          column="student_id"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

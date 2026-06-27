@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.example.Employee" table="EMPLOYEE">
+
+        <!-- Primary Key -->
+        <id name="id" column="EMP_ID">
+            <generator class="native"/>
+        </id>
+
+        <!-- Simple Property -->
+        <property name="name" column="EMP_NAME"/>
+
+
+        <!-- One-To-One Relationship -->
+
+        <one-to-one
+                name="passport"
+                class="com.example.Passport"/>
+
+
+        <!-- Many-To-One Relationship -->
+
+        <many-to-one
+                name="department"
+                class="com.example.Department"
+                column="DEPT_ID"/>
+
+
+        <!-- Component (Embedded Object) -->
+
+        <component name="address">
+            <property name="street"/>
+            <property name="city"/>
+            <property name="state"/>
+            <property name="pincode"/>
+        </component>
+
+
+        <!-- One-To-Many -->
+
+        <set name="projects" inverse="true" cascade="all">
+            <key column="EMP_ID"/>
+            <one-to-many class="com.example.Project"/>
+        </set>
+
+
+        <!-- Many-To-Many -->
+
+        <set name="courses" table="EMPLOYEE_COURSE">
+            <key column="EMP_ID"/>
+            <many-to-many
+                    class="com.example.Course"
+                    column="COURSE_ID"/>
+        </set>
+
+
+        <!-- List Collection -->
+
+        <list name="phones">
+            <key column="EMP_ID"/>
+            <list-index column="PHONE_INDEX"/>
+            <element column="PHONE_NUMBER" type="string"/>
+        </list>
+
+
+        <!-- Bag Collection -->
+
+        <bag name="emails">
+            <key column="EMP_ID"/>
+            <element column="EMAIL" type="string"/>
+        </bag>
+
+
+        <!-- Map Collection -->
+
+        <map name="skills">
+            <key column="EMP_ID"/>
+            <map-key column="SKILL_NAME" type="string"/>
+            <element column="LEVEL" type="string"/>
+        </map>
+
+
+        <!-- Array Collection -->
+
+        <array name="languages">
+            <key column="EMP_ID"/>
+            <list-index column="IDX"/>
+            <element column="LANGUAGE" type="string"/>
+        </array>
+
+
+        <!-- Primitive Array -->
+
+        <primitive-array name="marks">
+            <key column="EMP_ID"/>
+            <list-index column="IDX"/>
+            <element column="MARK" type="integer"/>
+        </primitive-array>
+
+
+        <!-- Collection of Components -->
+
+        <set name="previousAddresses">
+            <key column="EMP_ID"/>
+            <composite-element class="com.example.Address">
+                <property name="street"/>
+                <property name="city"/>
+                <property name="state"/>
+                <property name="pincode"/>
+            </composite-element>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

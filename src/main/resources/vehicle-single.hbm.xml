@@ -1,0 +1,21 @@
+<hibernate-mapping>
+    <class name="org.example.modal.inheritance.Vehicle" table="vehicle">
+
+        <id name="id">
+            <generator class="native"/>
+        </id>
+
+        <discriminator column="type" type="string"/>
+
+        <property name="name"/>
+
+        <subclass name="org.example.modal.inheritance.Car" discriminator-value="car">
+            <property name="seatingCapacity"/>
+        </subclass>
+
+        <subclass name="org.example.modal.inheritance.Bike" discriminator-value="bike">
+            <property name="engineCapacity"/>
+        </subclass>
+
+    </class>
+</hibernate-mapping>
