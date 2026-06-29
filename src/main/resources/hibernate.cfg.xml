@@ -22,7 +22,15 @@
 
         <!--<mapping resource="vehicle-joined.hbm.xml" />-->
 
-        <mapping resource="vehicle-union.hbm.xml" />
+        <!--<mapping resource="vehicle-union.hbm.xml" />-->
+
+        <!--<mapping resource="Person.hbm.xml" />
+
+        <mapping resource="Passport.hbm.xml" />-->
+
+        <!--<mapping resource="book_author_one_to_many.hbm.xml" />-->
+
+        <mapping resource="book_author_many_to_one.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>

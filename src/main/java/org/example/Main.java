@@ -104,6 +104,29 @@ package org.example;
         2. Bike  : id, name, engineCapacity
 
 
+        Relations :
+        1. one to one
+                    Person     : id, name, mobile_no
+                    Passport   : id, number,  person_id
+        2. one to many
+                    Question   : id, question
+                    Answers    : id, answer, q_id 1
+                                 id, answer, q_id 2
+
+                                 List
+                                 collection :
+                                 list : ordered and duplicate allow
+                                 set  : un ordered, unique
+                                 map, : key value paired
+                                 bag  : un ordered, duplicate allow
+
+                     Book
+                     Authors
+        3. many to one
+        4. many to many
+
+
+
  */
 
 import org.hibernate.Session;
@@ -122,7 +145,6 @@ public class Main {
         Session session = sessionFactory.openSession();
 
         Transaction tx = session.beginTransaction();
-
 
         // queries
 

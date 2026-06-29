@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<hibernate-mapping>
+    <class name="org.example.modal.relations_one_to_many.Book" table="book">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name"></property>
+
+        <list name="authors" cascade="all">
+            <key column="book_id"></key>
+            <one-to-many class="org.example.modal.relations_one_to_many.Author"/>
+        </list>
+
+    </class>
+
+    <class name="org.example.modal.relations_one_to_many.Author" table="author">
+        <id name="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name"></property>
+    </class>
+
+</hibernate-mapping>

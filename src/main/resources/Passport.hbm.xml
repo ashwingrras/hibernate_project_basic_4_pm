@@ -1,0 +1,14 @@
+
+
+<hibernate-mapping>
+    <class name="org.example.modal.relations_one_to_one.Passport" table="passport">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="passportNumber" column="passport_number"/>
+
+        <one-to-one name="person" class="org.example.modal.relations_one_to_one.Person" constrained="true"/>
+
+    </class>
+</hibernate-mapping>
