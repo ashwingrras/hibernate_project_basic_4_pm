@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<hibernate-mapping>
+
+    <class name="org.example.modal.relation_many_to_many.Student" table="student">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+
+        <set name="books" table="students_books"  cascade="all" inverse="true">
+            <key column="student_id" />
+            <many-to-many column="book_id" class="org.example.modal.relation_many_to_many.Book"/>
+        </set>
+
+    </class>
+
+    <class name="org.example.modal.relation_many_to_many.Book" table="book">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+
+        <set name="students" table="students_books"  cascade="all">
+            <key column="book_id" />
+            <many-to-many column="student_id" class="org.example.modal.relation_many_to_many.Student"/>
+        </set>
+    </class>
+
+</hibernate-mapping>

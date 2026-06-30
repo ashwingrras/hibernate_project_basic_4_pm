@@ -4,12 +4,12 @@
 <hibernate-mapping>
     <class name="org.example.modal.relations_one_to_many.Book" table="book">
         <id name="id">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
-        <property name="name"></property>
+        <property name="name"/>
 
         <list name="authors" cascade="all">
-            <key column="book_id"></key>
+            <key column="book_id"/>
             <one-to-many class="org.example.modal.relations_one_to_many.Author"/>
         </list>
 
@@ -17,9 +17,9 @@
 
     <class name="org.example.modal.relations_one_to_many.Author" table="author">
         <id name="id">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
-        <property name="name"></property>
+        <property name="name"/>
     </class>
 
 </hibernate-mapping>

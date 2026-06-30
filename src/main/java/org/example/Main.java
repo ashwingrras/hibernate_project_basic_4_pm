@@ -14,6 +14,10 @@ package org.example;
 
         2. annotation
 
+        Inheritance
+        1. single table
+        2. join table :
+        3. union table :
 
         Project : Coaching Management System
 
@@ -123,7 +127,32 @@ package org.example;
                      Book
                      Authors
         3. many to one
+
+
         4. many to many
+                         Student : id, name, mobile_no
+
+                         Book  : id, name, description, duration, fees
+
+                           Student : 1, apra, 909009
+                                     2, garvit, 090990
+                                     3,
+
+                        Book :    1, java, java course, 3, 8000
+                                    2, python, python course, 2, 6000
+                                    3
+
+                         student_book : student_id , book_id
+                                                1        2
+                                                2        1
+                                                2        2
+
+       Collection
+
+       list : ordered and duplicate allow
+       set  : un ordered, unique
+       map : key value paired
+       bag  : un ordered, duplicate allow
 
 
 
@@ -147,6 +176,8 @@ public class Main {
         Transaction tx = session.beginTransaction();
 
         // queries
+
+        // save , update, delete, fetch
 
         tx.commit();
         session.close();

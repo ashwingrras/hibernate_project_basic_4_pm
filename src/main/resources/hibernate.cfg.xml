@@ -30,7 +30,9 @@
 
         <!--<mapping resource="book_author_one_to_many.hbm.xml" />-->
 
-        <mapping resource="book_author_many_to_one.hbm.xml" />
+        <!--<mapping resource="book_author_many_to_one.hbm.xml" />-->
+
+        <mapping resource="student_book_many_to_many.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>
