@@ -158,6 +158,7 @@ package org.example;
 
  */
 
+import org.example.modal.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -177,7 +178,27 @@ public class Main {
 
         // queries
 
-        // save , update, delete, fetch
+        // save , update, delete, get
+
+
+        Student student = new Student();
+        //student.setId(1);
+        student.setName("Garvit");
+        student.setEmailId("garvit12121@gmail.com");
+        student.setMobileNo("989899889");
+
+        session.save(student);
+
+        /*Student getStudent = session.get(Student.class, student.getId());
+        System.out.println("name "+getStudent.getName());
+        getStudent.setName("garvit PCE ");*/
+
+        //session.update(student);
+
+        //session.update(getStudent);
+
+        //session.delete(getStudent);
+
 
         tx.commit();
         session.close();
