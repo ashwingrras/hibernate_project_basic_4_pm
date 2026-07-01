@@ -151,8 +151,9 @@ package org.example;
 
        list : ordered and duplicate allow
        set  : un ordered, unique
-       map : key value paired
        bag  : un ordered, duplicate allow
+       map : key value paired
+
 
 
 
